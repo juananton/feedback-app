@@ -1,16 +1,27 @@
+import PropTypes from 'prop-types';
 import FeedbackItem from './FeedbackItem';
 
-function FeedbackList({ feedback }) {
-  if (!feedback || feedback.length === 0) {
+function FeedbackList({ feedbackListData }) {
+  if (!feedbackListData || feedbackListData.length === 0) {
     return <p>No feedback yet</p>;
   }
   return (
     <div className='feedback-list'>
-      {feedback.map((item) => (
-        <FeedbackItem key={item.id} item={item} />
+      {feedbackListData.map((item) => (
+        <FeedbackItem key={item.id} feedbackItemData={item} />
       ))}
     </div>
   );
 }
+
+FeedbackList.propTypes = {
+  feedbackListData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    })
+  ),
+};
 
 export default FeedbackList;
