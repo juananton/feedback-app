@@ -1,4 +1,4 @@
-const FeedbackDataSource = [
+const FeedbackMockData = [
   {
     id: 1,
     rating: 5,
@@ -16,4 +16,4 @@ const FeedbackDataSource = [
   },
 ];
 
-export default FeedbackDataSource;
+export default FeedbackMockData;
