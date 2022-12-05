@@ -22,19 +22,50 @@ export const FeedbackProvider = ({ children }) => {
     },
   ]);
 
+  const [itemEdit, setItemEdit] = useState({
+    item: {},
+    edit: false,
+  });
+
+  // Add feedback item
   const addItem = newItem => {
     newItem.id = uuidv4();
     setList([newItem, ...list]);
   };
 
+  // Delete feedback item
   const deleteItem = id => {
     if (window.confirm('Are you sure you want to delete?')) {
       setList(list.filter(item => item.id !== id));
     }
   };
 
+  // Edit feedback item
+  const editItem = item => {
+    setItemEdit({
+      item,
+      edit: true,
+    });
+  };
+
+  // Update feedback item
+  const updateItem = (id, updatedItem) => {
+    setList(
+      list.map(item => (item.id === id ? { ...item, ...updatedItem } : item))
+    );
+  };
+
   return (
-    <FeedbackContext.Provider value={{ list, addItem, deleteItem }}>
+    <FeedbackContext.Provider
+      value={{
+        list,
+        itemEdit,
+        addItem,
+        deleteItem,
+        editItem,
+        updateItem,
+      }}
+    >
       {children}
     </FeedbackContext.Provider>
   );

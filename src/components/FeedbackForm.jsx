@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import FeedbackContext from '../context/FeedbackContext';
 import RatingSelect from './RatingSelect';
 import Button from './shared/Button';
@@ -6,11 +6,21 @@ import Card from './shared/Card';
 
 function FeedbackForm() {
   const [text, setText] = useState('');
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(5);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
+  const [isActive, setIsActive] = useState(false);
 
-  const { addItem } = useContext(FeedbackContext);
+  const { addItem, itemEdit, updateItem } = useContext(FeedbackContext);
+
+  useEffect(() => {
+    if (itemEdit.edit === true) {
+      setBtnDisabled(false);
+      setText(itemEdit.item.text);
+      setRating(itemEdit.item.rating);
+      setIsActive(true);
+    }
+  }, [itemEdit]);
 
   const handleTextChange = e => {
     if (text === '') {
@@ -34,14 +44,18 @@ function FeedbackForm() {
         text,
         rating,
       };
-      addItem(newItem);
+      if (itemEdit.edit === true) {
+        updateItem(itemEdit.item.id, newItem);
+      } else {
+        addItem(newItem);
+      }
 
       setText('');
     }
   };
 
   return (
-    <Card>
+    <Card active={isActive && true}>
       <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us?</h2>
         <RatingSelect select={rating => setRating(rating)} />

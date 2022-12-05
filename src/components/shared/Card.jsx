@@ -1,16 +1,5 @@
-import { PropTypes } from 'prop-types';
-
-function Card({ children, reverseStyle }) {
-  return <div className={`card ${reverseStyle && 'reverse'}`}>{children}</div>;
+function Card({ children, active = false }) {
+  return <div className={`card ${active && 'active'}`}>{children}</div>;
 }
-
-Card.defaultProps = {
-  reverseStyle: false,
-};
-
-Card.propTypes = {
-  children: PropTypes.node.isRequired,
-  reverse: PropTypes.bool,
-};
 
 export default Card;

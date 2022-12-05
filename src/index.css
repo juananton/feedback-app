@@ -53,6 +53,10 @@ header {
   color: #fff;
 }
 
+.card.active {
+  outline: 4px solid #ff6a95;
+}
+
 .card h2 {
   font-size: 22px;
   font-weight: 600;
@@ -141,15 +145,18 @@ input:focus {
 .close,
 .edit {
   position: absolute;
-  top: 10px;
-  right: 20px;
+  top: 1rem;
+  right: 1rem;
   cursor: pointer;
   background: none;
   border: none;
+  background-color: lavenderblush;
+  padding: 0.5rem 0.5rem 0.25rem;
+  border-radius: 0.25rem;
 }
 
 .edit {
-  right: 40px;
+  right: 3.25rem;
 }
 
 .btn {

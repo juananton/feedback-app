@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
+import style from './Header.module.css';
 
 function Header({ text }) {
   return (
-    <header>
+    <header className={style.header}>
       <h3>{text}</h3>
     </header>
   );
@@ -10,10 +10,6 @@ function Header({ text }) {
 
 Header.defaultProps = {
   text: 'Feedback App',
-};
-
-Header.propTypes = {
-  text: PropTypes.string,
 };
 
 export default Header;
