@@ -5,10 +5,7 @@
 }
 
 body {
-  font-family: 'SF Pro', sans-serif;
-  background-color: #202142;
-  color: #fff;
-  line-height: 1.6;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 h1,
@@ -17,7 +14,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-weight: normal;
 }
 
 ul {
@@ -25,41 +22,33 @@ ul {
 }
 
 .container {
-  max-width: 768px;
+  max-width: 720px;
   margin: auto;
-  padding: 0 20px;
+  padding: 0 1rem;
 }
 
 header {
-  height: 70px;
-  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
+  justify-content: space-between;
 }
 
 .card {
   background-color: #fff;
-  color: #333;
-  border-radius: 15px;
-  padding: 40px 50px;
-  margin: 20px 0;
-  position: relative;
-}
-
-.card.reverse {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
+  border: 1px solid black;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  margin: 1.5rem 0;
 }
 
 .card.active {
-  outline: 4px solid #ff6a95;
+  outline: 2px solid black;
 }
 
 .card h2 {
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -67,20 +56,19 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin: 30px 0 40px;
+  margin: 2rem auto;
+  width: 50%;
 }
 
 .rating li,
 .num-display {
   position: relative;
-  background: #f4f4f4;
-  width: 50px;
-  height: 50px;
+  background: #f5f5f5;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 10px;
   text-align: center;
   border-radius: 50%;
-  font-size: 19px;
-  border: 1px #eee solid;
   transition: 0.3s;
 }
 
@@ -88,8 +76,8 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 50px;
-  height: 50px;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 10px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -98,7 +86,7 @@ header {
 
 .rating li:hover,
 .num-display {
-  background: #ff6a95;
+  background: black;
   color: #fff;
 }
 
@@ -107,22 +95,24 @@ header {
 }
 
 [type='radio']:checked ~ label {
-  background: #ff6a95;
+  background: black;
   color: #fff;
 }
 
 .input-group {
   display: flex;
   flex-direction: row;
-  border: 1px solid #ccc;
-  padding: 8px 10px;
-  border-radius: 8px;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  padding-left: 1.5rem;
+  border-radius: 0.75rem;
 }
 
 input {
   flex-grow: 2;
   border: none;
   font-size: 16px;
+  background-color: transparent;
 }
 
 input:focus {
@@ -130,33 +120,42 @@ input:focus {
 }
 
 .feedback-stats {
-  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.num-display {
-  position: absolute;
-  top: -10px;
-  left: -10px;
+.item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+.feedback-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.feedback-wrapper .num-display {
+  margin-right: 1rem;
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
 .close,
 .edit {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   cursor: pointer;
   background: none;
   border: none;
-  background-color: lavenderblush;
-  padding: 0.5rem 0.5rem 0.25rem;
-  border-radius: 0.25rem;
+  padding: 0.75rem 0.75rem 0.5rem;
+  border-radius: 0.5rem;
 }
 
-.edit {
-  right: 3.25rem;
+.close:hover,
+.edit:hover {
+  background-color: #f6f6f6;
 }
 
 .btn {
@@ -170,7 +169,7 @@ input:focus {
 }
 
 .btn-primary {
-  background-color: #202142;
+  background-color: black;
 }
 
 .btn-secondary {
@@ -183,8 +182,8 @@ input:focus {
 }
 
 .btn:disabled {
-  background-color: #cccccc;
-  color: #333;
+  background-color: #e2e2e2;
+  color: #a2a2a2;
   cursor: auto;
 }
 
@@ -196,7 +195,6 @@ input:focus {
 .message {
   padding-top: 10px;
   text-align: center;
-  color: rebeccapurple;
 }
 
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
@@ -209,7 +207,6 @@ input:focus {
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
  * document */
 .about-link a {
-  color: #fff;
   cursor: pointer;
 }
 
@@ -226,16 +223,17 @@ input:focus {
 }
 
 @media (max-width: 600px) {
+  .card {
+    padding: 1rem;
+  }
+
   .rating li {
     margin: 10px 3px;
   }
 
   .rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 30px 0 40px;
+    margin: 1rem auto;
+    width: 75%;
   }
 
   .input-group input {
