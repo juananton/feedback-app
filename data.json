@@ -11,13 +11,13 @@
       "review": "Feeback item 2 coming from the backend"
     },
     {
-      "id": 3,
+      "review": "Feeback item 2 coming from the backend",
       "rating": 2,
-      "review": "Feeback item 3 coming from the backend"
+      "id": 3
     },
     {
-      "review": "This another test feedback",
-      "rating": 3,
+      "review": "Another feedback test here",
+      "rating": 4,
       "id": 4
     }
   ]

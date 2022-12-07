@@ -36,11 +36,10 @@ export const FeedbackProvider = ({ children }) => {
       const response = await fetch('http://localhost:5000/data', {
         method: 'POST',
         headers: {
-          'content-type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(item),
       });
-      console.log(response.body);
       const data = await response.json();
 
       setList([data, ...list]);
@@ -50,8 +49,11 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   // Delete feedback item
-  const deleteItem = id => {
+  const deleteItem = async id => {
     if (window.confirm('Are you sure you want to delete?')) {
+      await fetch(`http://localhost:5000/data/${id}`, {
+        method: 'DELETE',
+      });
       setList(list.filter(item => item.id !== id));
     }
   };
@@ -65,10 +67,17 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   // Update feedback item
-  const updateItem = (id, updatedItem) => {
-    setList(
-      list.map(item => (item.id === id ? { ...item, ...updatedItem } : item))
-    );
+  const updateItem = async (id, updatedItem) => {
+    const response = await fetch(`http://localhost:5000/data/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedItem),
+    });
+    const data = await response.json();
+
+    setList(list.map(item => (item.id === id ? { ...item, ...data } : item)));
     setItemEdit({
       edit: false,
     });
