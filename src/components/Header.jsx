@@ -1,9 +1,13 @@
-import style from './Header.module.css';
+import { Link } from 'react-router-dom';
 
 function Header({ text }) {
   return (
-    <header className={style.header}>
+    <header>
       <h3>{text}</h3>
+
+      <Link to='/about'>
+        <p>info</p>
+      </Link>
     </header>
   );
 }

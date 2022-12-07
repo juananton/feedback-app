@@ -3,9 +3,8 @@ import FeedbackForm from './components/FeedbackForm';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import Header from './components/Header';
-import AboutPage from './pages/AboutPage';
-import AboutIconLink from './components/AboutIconLink';
 import { FeedbackProvider } from './context/FeedbackContext';
+import AboutPage from './pages/AboutPage';
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
                   <FeedbackForm />
                   <FeedbackStats />
                   <FeedbackList />
-                  <AboutIconLink />
                 </>
               }
             ></Route>
