@@ -1,36 +1,52 @@
-import { createContext, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { createContext, useEffect, useState } from 'react';
 
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-  const [list, setList] = useState([
-    {
-      id: 1,
-      rating: 5,
-      review: 'This is feeback item 1',
-    },
-    {
-      id: 2,
-      rating: 4,
-      review: 'This is feeback item 2',
-    },
-    {
-      id: 3,
-      rating: 2,
-      review: 'This is feeback item 3',
-    },
-  ]);
+  const [isLoading, setIsloading] = useState(true);
+  const [list, setList] = useState([]);
 
   const [itemEdit, setItemEdit] = useState({
     item: {},
     edit: false,
   });
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // Fetch data
+  const getData = async () => {
+    try {
+      const response = await fetch(
+        'http://localhost:5000/data?_sort=id&_order=desc'
+      );
+      const data = await response.json();
+
+      setList(data);
+      setIsloading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   // Add feedback item
-  const addItem = newItem => {
-    newItem.id = uuidv4();
-    setList([newItem, ...list]);
+  const addItem = async item => {
+    try {
+      const response = await fetch('http://localhost:5000/data', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(item),
+      });
+      console.log(response.body);
+      const data = await response.json();
+
+      setList([data, ...list]);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   // Delete feedback item
@@ -63,6 +79,7 @@ export const FeedbackProvider = ({ children }) => {
       value={{
         list,
         itemEdit,
+        isLoading,
         addItem,
         deleteItem,
         editItem,

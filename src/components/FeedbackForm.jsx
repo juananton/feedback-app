@@ -67,7 +67,7 @@ function FeedbackForm() {
   return (
     <Card active={isActive && true}>
       <form onSubmit={handleSubmit}>
-        <h2>How would you rate our service???</h2>
+        <h2>How would you rate our service?</h2>
         <RatingSelect select={setRating} selected={rating} />
         <div className='input-group'>
           <input

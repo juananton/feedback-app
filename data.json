@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "rating": 5,
+      "review": "Feeback item 1 coming from the backend"
+    },
+    {
+      "id": 2,
+      "rating": 4,
+      "review": "Feeback item 2 coming from the backend"
+    },
+    {
+      "id": 3,
+      "rating": 2,
+      "review": "Feeback item 3 coming from the backend"
+    },
+    {
+      "review": "This another test feedback",
+      "rating": 3,
+      "id": 4
+    }
+  ]
+}
