@@ -5,7 +5,7 @@ import Button from './shared/Button';
 import Card from './shared/Card';
 
 function FeedbackForm() {
-  const [text, setText] = useState('');
+  const [review, setReview] = useState('');
   const [rating, setRating] = useState(5);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
@@ -16,7 +16,7 @@ function FeedbackForm() {
   useEffect(() => {
     if (itemEdit.edit) {
       setBtnDisabled(false);
-      setText(itemEdit.item.text);
+      setReview(itemEdit.item.review);
       setRating(itemEdit.item.rating);
       setIsActive(true);
     }
@@ -24,31 +24,31 @@ function FeedbackForm() {
 
   const handleTextChange = e => {
     const { value } = e.target;
-    const isTextEmpty = value === '';
-    const isTextTooShort = value.trim().length <= 10;
+    const isReviewEmpty = value === '';
+    const isReviewTooShort = value.trim().length <= 10;
 
-    if (isTextEmpty) {
+    if (isReviewEmpty) {
       setBtnDisabled(true);
       setMessage(null);
-    } else if (isTextTooShort) {
+    } else if (isReviewTooShort) {
       setBtnDisabled(true);
-      setMessage('Text must be at least 10 characters');
+      setMessage('Review must be at least 10 characters');
     } else {
       setBtnDisabled(false);
       setMessage(null);
     }
 
-    setText(value);
+    setReview(value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    const isTextValid = text.trim().length > 10;
-    if (!isTextValid) return;
+    const isReviewValid = review.trim().length > 10;
+    if (!isReviewValid) return;
 
     const newItem = {
-      text,
+      review,
       rating,
     };
 
@@ -58,7 +58,7 @@ function FeedbackForm() {
       addItem(newItem);
     }
 
-    setText('');
+    setReview('');
     setBtnDisabled(true);
     setRating(5);
     setIsActive(false);
@@ -67,14 +67,14 @@ function FeedbackForm() {
   return (
     <Card active={isActive && true}>
       <form onSubmit={handleSubmit}>
-        <h2>How would you rate our service?</h2>
+        <h2>How would you rate our service???</h2>
         <RatingSelect select={setRating} selected={rating} />
         <div className='input-group'>
           <input
             onChange={handleTextChange}
             type='text'
             placeholder='Write a review'
-            value={text}
+            value={review}
           />
           <Button type='submit' isDisabled={btnDisabled}>
             Send

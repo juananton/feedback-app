@@ -11,7 +11,7 @@ function FeedbackItem({ item }) {
       <div className='item-wrapper'>
         <div className='feedback-wrapper'>
           <div className='num-display'>{item.rating}</div>
-          <div className='text-display'>{item.text}</div>
+          <div className='text-display'>{item.review}</div>
         </div>
         <div className='buttons-wrapper'>
           <button onClick={() => editItem(item)} className='edit'>

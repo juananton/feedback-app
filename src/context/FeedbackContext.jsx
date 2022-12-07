@@ -8,17 +8,17 @@ export const FeedbackProvider = ({ children }) => {
     {
       id: 1,
       rating: 5,
-      text: 'This is feeback item 1',
+      review: 'This is feeback item 1',
     },
     {
       id: 2,
       rating: 4,
-      text: 'This is feeback item 2',
+      review: 'This is feeback item 2',
     },
     {
       id: 3,
       rating: 2,
-      text: 'This is feeback item 3',
+      review: 'This is feeback item 3',
     },
   ]);
 
