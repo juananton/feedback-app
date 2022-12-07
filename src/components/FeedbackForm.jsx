@@ -14,7 +14,7 @@ function FeedbackForm() {
   const { addItem, itemEdit, updateItem } = useContext(FeedbackContext);
 
   useEffect(() => {
-    if (itemEdit.edit === true) {
+    if (itemEdit.edit) {
       setBtnDisabled(false);
       setText(itemEdit.item.text);
       setRating(itemEdit.item.rating);
@@ -23,10 +23,14 @@ function FeedbackForm() {
   }, [itemEdit]);
 
   const handleTextChange = e => {
-    if (text === '') {
+    const { value } = e.target;
+    const isTextEmpty = value === '';
+    const isTextTooShort = value.trim().length <= 10;
+
+    if (isTextEmpty) {
       setBtnDisabled(true);
       setMessage(null);
-    } else if (text !== '' && text.trim().length <= 10) {
+    } else if (isTextTooShort) {
       setBtnDisabled(true);
       setMessage('Text must be at least 10 characters');
     } else {
@@ -34,31 +38,37 @@ function FeedbackForm() {
       setMessage(null);
     }
 
-    setText(e.target.value);
+    setText(value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (text.trim().length > 10) {
-      const newItem = {
-        text,
-        rating,
-      };
-      if (itemEdit.edit === true) {
-        updateItem(itemEdit.item.id, newItem);
-      } else {
-        addItem(newItem);
-      }
 
-      setText('');
+    const isTextValid = text.trim().length > 10;
+    if (!isTextValid) return;
+
+    const newItem = {
+      text,
+      rating,
+    };
+
+    if (itemEdit.edit) {
+      updateItem(itemEdit.item.id, newItem);
+    } else {
+      addItem(newItem);
     }
+
+    setText('');
+    setBtnDisabled(true);
+    setRating(5);
+    setIsActive(false);
   };
 
   return (
     <Card active={isActive && true}>
       <form onSubmit={handleSubmit}>
-        <h2>How would you rate your service with us?</h2>
-        <RatingSelect select={rating => setRating(rating)} />
+        <h2>How would you rate our service?</h2>
+        <RatingSelect select={setRating} selected={rating} />
         <div className='input-group'>
           <input
             onChange={handleTextChange}

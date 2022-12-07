@@ -4,12 +4,8 @@ import FeedbackContext from '../context/FeedbackContext';
 function FeedbackStats() {
   const { list } = useContext(FeedbackContext);
 
-  let average =
-    list.reduce((acc, cur) => {
-      return acc + cur.rating;
-    }, 0) / list.length;
-
-  average = average.toFixed(1).replace(/[.,]0$/, '');
+  const totalRating = list.reduce((acc, cur) => acc + cur.rating, 0);
+  const average = (totalRating / list.length).toFixed(1);
 
   return (
     <div className='feedback-stats'>
