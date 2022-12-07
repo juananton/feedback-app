@@ -53,6 +53,9 @@ export const FeedbackProvider = ({ children }) => {
     setList(
       list.map(item => (item.id === id ? { ...item, ...updatedItem } : item))
     );
+    setItemEdit({
+      edit: false,
+    });
   };
 
   return (
