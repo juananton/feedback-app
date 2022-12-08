@@ -4,7 +4,7 @@ import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import Header from './components/Header';
 import { FeedbackProvider } from './context/FeedbackContext';
-import AboutPage from './pages/AboutPage';
+import InfoPage from './pages/InfoPage';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
                 </>
               }
             ></Route>
-            <Route path='/about' element={<AboutPage />} />
+            <Route path='/info' element={<InfoPage />} />
           </Routes>
         </div>
       </Router>

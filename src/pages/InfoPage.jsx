@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Card from '../components/shared/Card';
 
-function AboutPage() {
+function InfoPage() {
   return (
     <Card>
       <div className='about'>
@@ -16,4 +16,4 @@ function AboutPage() {
   );
 }
 
-export default AboutPage;
+export default InfoPage;
