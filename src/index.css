@@ -143,7 +143,8 @@ input:focus {
 .feedback-wrapper {
   display: flex;
   align-items: center;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+  width: 100%;
 }
 
 .feedback-wrapper .num-display {
