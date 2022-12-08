@@ -6,7 +6,8 @@
 
 body {
   font-family: 'JetBrains Mono', monospace;
-  background-color: #f5f5f5;
+  background-color: #f1f1f4;
+  color: #222223;
 }
 
 a {
@@ -47,13 +48,13 @@ header {
 
 .card {
   background-color: #fff;
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   padding: 2rem;
   margin: 1.25rem 0;
 }
 
 .card.active {
-  outline: 2px solid black;
+  outline: 2px solid #222223;
 }
 
 .card h2 {
@@ -72,7 +73,7 @@ header {
 .rating li,
 .num-display {
   position: relative;
-  background: #f5f5f5;
+  background: #f1f1f4;
   width: 2.5rem;
   height: 2.5rem;
   padding: 10px;
@@ -95,7 +96,7 @@ header {
 
 .rating li:hover,
 .num-display {
-  background: black;
+  background: #222223;
   color: #fff;
 }
 
@@ -104,14 +105,14 @@ header {
 }
 
 [type='radio']:checked ~ label {
-  background: black;
+  background: #222223;
   color: #fff;
 }
 
 .input-group {
   display: flex;
   flex-direction: row;
-  background-color: #f5f5f5;
+  background-color: #f1f1f4;
   padding: 1rem;
   padding-left: 1.5rem;
   border-radius: 0.75rem;
@@ -122,6 +123,7 @@ input {
   border: none;
   font-size: 16px;
   background-color: transparent;
+  font-family: inherit;
 }
 
 input:focus {
@@ -188,10 +190,11 @@ input:focus {
   width: 100px;
   height: 40px;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .btn-primary {
-  background-color: black;
+  background-color: #222223;
 }
 
 .btn-secondary {
@@ -200,12 +203,12 @@ input:focus {
 
 .btn:hover {
   transform: scale(0.98);
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .btn:disabled {
-  background-color: #e2e2e2;
-  color: #a2a2a2;
+  background-color: #e5e5e9;
+  color: #9e9ea0;
   cursor: auto;
 }
 
@@ -219,29 +222,13 @@ input:focus {
   text-align: center;
 }
 
-/* FIX: Remove position: absolute to keep about icon at the bottom of the
- * document */
-.about-link {
-  display: flex;
-  justify-content: flex-end;
-}
-
-/* FIX: Remove position: absolute to keep about icon at the bottom of the
- * document */
-.about-link a {
-  cursor: pointer;
-}
-
-.about-link a:hover {
-  color: #ff6a95;
-}
-
 .about h1 {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
+  font-size: 24px;
 }
 
 .about p {
-  margin: 10px 0;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 600px) {
