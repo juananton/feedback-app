@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import { FaEdit, FaTimes } from 'react-icons/fa';
+import { FiEdit, FiXCircle } from 'react-icons/fi';
 import FeedbackContext from '../context/FeedbackContext';
 import Card from './shared/Card';
+import IconButton from './shared/IconButton';
 
 function FeedbackItem({ item }) {
   const { deleteItem, editItem } = useContext(FeedbackContext);
@@ -14,12 +15,12 @@ function FeedbackItem({ item }) {
           <div className='text-display'>{item.review}</div>
         </div>
         <div className='buttons-wrapper'>
-          <button onClick={() => editItem(item)} className='edit'>
-            <FaEdit color='black' className='icon' />
-          </button>
-          <button onClick={() => deleteItem(item.id)} className='close'>
-            <FaTimes color='black' className='icon' />
-          </button>
+          <IconButton onClick={() => editItem(item)}>
+            <FiEdit className='icon' />
+          </IconButton>
+          <IconButton onClick={() => deleteItem(item.id)}>
+            <FiXCircle className='icon' />
+          </IconButton>
         </div>
       </div>
     </Card>
