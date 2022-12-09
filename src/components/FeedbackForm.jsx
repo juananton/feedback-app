@@ -5,8 +5,8 @@ import Button from './shared/Button';
 import Card from './shared/Card';
 
 function FeedbackForm() {
-  const [review, setReview] = useState('');
   const [rating, setRating] = useState(5);
+  const [review, setReview] = useState('');
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
   const [isActive, setIsActive] = useState(false);
@@ -15,17 +15,16 @@ function FeedbackForm() {
 
   useEffect(() => {
     if (itemEdit.edit) {
-      setBtnDisabled(false);
-      setReview(itemEdit.item.review);
-      setRating(itemEdit.item.rating);
       setIsActive(true);
+      setRating(itemEdit.item.rating);
+      setReview(itemEdit.item.review);
+      setBtnDisabled(false);
     }
   }, [itemEdit]);
 
   const handleTextChange = e => {
-    const { value } = e.target;
-    const isReviewEmpty = value === '';
-    const isReviewTooShort = value.trim().length <= 10;
+    const isReviewEmpty = review === '';
+    const isReviewTooShort = review.trim().length <= 10;
 
     if (isReviewEmpty) {
       setBtnDisabled(true);
@@ -38,7 +37,7 @@ function FeedbackForm() {
       setMessage(null);
     }
 
-    setReview(value);
+    setReview(e.target.value);
   };
 
   const handleSubmit = e => {
